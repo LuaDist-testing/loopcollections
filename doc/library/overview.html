@@ -1,0 +1,55 @@
+<p>The LOOP package provides a library of classes implemented using its models.
+All classes included in its library were created or derived from actual implementations used in either academic or commercial applications, and many are reused in more than one application.
+Therefore, even though the classes presented here are provided mainly as use examples of LOOP models they are very useful for construction of software applications.</p>
+
+<p>Most of these classes were initially created as Lua conventional modules and were later converted to classes so it is straightforward to convert them back to modules that don't lay on LOOP.
+Some of these classes can even be used as an instance of itself thus avoiding the creation of singleton objects.
+However, in some scenarios, it is interesting to be able to have multiple instances.
+The LOOP Class Library is organized in six groups as presented below.</p>
+
+<h2><a name="collection">Collections</a></h2>
+
+<p>This group contains classes that implement different data structures that are particularly efficient in Lua.
+Some of these classes were specifically devised for the implementation of a particular class of the LOOP library and therefore are not very general.
+However, classes like <code>ObjectCache</code>, <code>UnorderedArray</code> and <code>OrderedSet</code> are very general and may be used in many different situations.</p>
+
+<dl>
+
+<dt><a href="collection/UnorderedArray.html">Unordered Array</a></dt>
+<dd>
+	<p>Class of objects that store a sequence of values as a Lua array but removes the elements from any position without shifting the following elements.
+	However it does not guarantee the order the values are stored in the array.
+	This class is useful for storing efficiently a sequence of values that may be iterated in any order and the number of elements varies constantly during interation.</p>
+</dd>
+
+<dt><a href="collection/UnorderedArraySet.html">Unordered Array-Set</a></dt>
+<dd>
+	<p>Class of objects that store a sequence of values as a Lua array like class <a href="UnorderedArray.html">UnorderedArray</a>.
+	However it additionally maps values to its current position in the array allowing efficient containment checks and location of a value in the array for removal.
+	This class is useful when it is necessary to store a set elements (no duplicates) as an array (<i>e.g.</i> to comply with some library API) but such elements are removed and inserted frequently or it is necessary to perform quick containment checks.</p>
+</dd>
+
+<dt><a href="collection/OrderedSet.html">Ordered Set</a></dt>
+<dd>
+	<p>Class of objects that store a set of values arranged in a particular order.
+	As a usual set, it does not allow duplicates and checks for containment efficiently.
+	The values are stored like a linked list, therefore the sequence can only be iterated in a single direction, <i>i.e.</i> cannot get the previous value.
+	Insertions and removals at any point of the sequence are done efficiently.
+	This class is useful for storing a large set of values without repetitions that are organized in a particular order and accepts frequent insertions and removals at any point of the sequence during interations.</p>
+</dd>
+
+<dt><a href="collection/PriorityQueue.html">Priority Queue</a></dt>
+<dd>
+	<p>Class of objects that store a set of values with associated weight values so that these values are arranged in the descending order of weight.
+	The values are stored like in the <a href="OrderedSet.html"><code>OrderedSet</code></a> class, but the values are sorted in descending order of weight.
+	This class is useful for implementing priority queues with no repeated values and which priorities are comparable values like numbers or strings.</p>
+</dd>
+
+<dt><a href="collection/MapWithArrayOfKeys.html">Map with Array of Keys</a></dt>
+<dd>
+	<p>Class of objects that store in a single table a mapping of non-integer key values to arbitrary values and a sequence of all the key values currently mapped.
+	The array of keys is stored just like the sequence stored by <a href="UnorderedArray.html"><code>UnorderedArray</code></a> instances.
+	This class is useful for storing a map of non-integer values and an array of its keys in a single table.</p>
+</dd>
+
+</dl>
